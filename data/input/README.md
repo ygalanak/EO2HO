@@ -8,3 +8,5 @@
 
 **Source:** https://github.com/hmrc/eat-out-to-help-out-establishments
 
+
+`DocumentationsCompaniesHouseData.pdf` corresponds to the documentation file of [Companies House](https://www.gov.uk/government/organisations/companies-house) data (see most recent release of data [here](http://download.companieshouse.gov.uk/en_output.html)).
