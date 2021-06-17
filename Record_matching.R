@@ -1,11 +1,18 @@
-#Load libraries.
+# ---
+# Eat Out to Help Out
+# Output: matches participants register `restaurants.csv from HMRC to companies incorporations register from Companies House
+# June 2021
+# Contact: jph37@kent.ac.uk; i.galanakis@kent.ac.uk
+# ---
+
+# Load libraries ----
 library('lubridate')
 library('dplyr')
 library('tidyr')
 library('stringdist')
 
-#Load and prepare datasets.
-#Incorporations data.
+# Load and prepare datasets ----
+## Companies House data ----
 repD <- read.csv("BasicCompanyDataAsOneFile-2020-10-01.csv")
 #Re-format incorporation date.
 repD$IncorporationDate <- as.Date(repD$IncorporationDate, "%d/%m/%Y")
@@ -15,7 +22,7 @@ repD$SIC2dg1 <- as.integer(repD$SIC5dg1/1000)
 #Homogenise postcodes.
 repD$Postcode <- toupper(gsub(" ", "", repD$RegAddress.PostCode))
 
-#Restaurants data.
+## Restaurants data (participants) ----
 restaurants <- read.csv("restaurants.csv")
 #Homogenise postcodes.
 restaurants$Postcode <- toupper(gsub(" ", "", restaurants$Postcode))
@@ -24,6 +31,7 @@ restaurants$PostcodeDistrict <- sub("...$", "", restaurants$Postcode)
 #Keep only postcode area.
 restaurants$PostcodeArea <- sub("[0-9]+(.*)", "", restaurants$PostcodeDistrict)
 
+## Join ----
 #Join CH and EO2HO registers by postcode and only companies with SIC 55 or 56.
 all_companies <- merge(x=restaurants, y=repD[which(repD$SIC2dg1 %in% list(55,56)),], by="Postcode")
 #Discard unused columns.
@@ -54,7 +62,7 @@ all_companies$match <- abs(all_companies$addressMatch + all_companies$match.n + 
 #Select records with a match metric above a threshold (0.45 seems to yield reasonable results without too many false positives).
 all_companies_2 <- all_companies[which(all_companies$match < 0.45),]
 
-#Aggregate records by SIC.
+# Aggregate records by SIC ----
 restaurant_sic <- all_companies_2 %>% group_by(SIC5dg1) %>% count()
 #Calculate percentage of sample.
 restaurant_sic$percent <- restaurant_sic$n / sum(restaurant_sic$n)
@@ -62,7 +70,7 @@ restaurant_sic$percent <- restaurant_sic$n / sum(restaurant_sic$n)
 restaurant_sic$lo <- sapply(restaurant_sic$n, function(z) prop.test(z, sum(restaurant_sic$n), conf.level=0.99)$conf.int[1])
 restaurant_sic$hi <- sapply(restaurant_sic$n, function(z) prop.test(z, sum(restaurant_sic$n), conf.level=0.99)$conf.int[2])
 
-#Aggregate records by incorporation date.
+# Aggregate records by incorporation date ----
 #Select only incorporations in 2020 and aggregate by month.
 restaurant_new <- all_companies_2[which(all_companies_2$IncorporationDate >= as.Date("2020-01-01")),] %>% group_by(month(IncorporationDate)) %>% count() %>% rename(Month = `month(IncorporationDate)`)
 restaurant_new[10,] <- c(0, (all_companies_2[which(all_companies_2$IncorporationDate < as.Date("2020-01-01")),] %>% count()))
