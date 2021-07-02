@@ -35,6 +35,7 @@ restaurants$PostcodeDistrict <- sub("...$", "", restaurants$Postcode)
 #Keep only postcode area.
 restaurants$PostcodeArea <- sub("[0-9]+(.*)", "", restaurants$PostcodeDistrict)
 
+# Matching ----
 ##First match - by exact name and postcode ----
 #Function to clean the names.
 name_clean <- function(cpy) {
@@ -54,7 +55,7 @@ companies <- merge(x=restaurants, y=repD, by.x="Name", by.y="Name")
 #companies_1 <- companies[which(companies$Postcode.x == companies$Postcode.y),]
 #This excluded too many results, so we use postcode area instead.
 
-#Cross-checking by postcode area.
+#Cross-checking by postcode area ----
 companies_2 <- companies[which(companies$PostcodeArea.x == companies$PostcodeArea.y),]
 #Check the list of excluded matches.
 #companies_2_un <- companies[which(companies$PostcodeArea.x != companies$PostcodeArea.y),]
@@ -88,14 +89,15 @@ companies_6 <- companies_6 %>% rename(Name=Name.x)
 ##Bind the two subsets of matched records----
 all_companies <- rbind(companies_2[intersect(colnames(companies_2), colnames(companies_6))], companies_6[intersect(colnames(companies_2), colnames(companies_6))])
 
-#All remaining unmatched restaurants.
+## Non-matched ----
 unmatched <- restaurants_1[which(!(restaurants_1$Name %in% all_companies$Name)),]
 
+## Duplicates ----
 #Lower bound for number of duplicates.
 nrow(restaurants_1) - nrow(all_companies) - nrow(unmatched)
 
-#Aggregations
-##Aggregate records by SIC----
+# Aggregations ----
+## Aggregate records by SIC----
 restaurant_sic <- all_companies %>% group_by(SIC5dg1) %>% count()
 #Calculate percentage of sample.
 restaurant_sic$percent <- restaurant_sic$n / sum(restaurant_sic$n)
@@ -105,12 +107,14 @@ restaurant_sic$hi <- sapply(restaurant_sic$n, function(z) prop.test(z, sum(resta
 #Save table.
 write.csv(restaurant_sic, "Matched_sic.csv")
 
+# Analysis ----                           
 ##Investigate incorporation dates----
 #Number of 'new' companies (incorporated after the registration deadline).
 all_companies[which(all_companies$IncorporationDate > as.Date("2020-07-08")),] %>% count()
 #Range of dates.
 range(all_companies$IncorporationDate)
 
+## Histogram ----
 #Histogram of incorporation dates of matched companies.
 library('ggplot2')
 library('plotly')
@@ -119,13 +123,14 @@ plot_ly(data=all_companies, x=~IncorporationDate, type='histogram') %>% layout(t
                                                                                  yaxis=list(title="Number"))
 
 
-##Compare restaurants, matched and unmatched by postcode area----
+## Compare restaurants, matched and unmatched by postcode area ----
 restaurants_area <- restaurants_1 %>% group_by(PostcodeArea) %>% count()
 restaurants_area <- all_companies %>% group_by(PostcodeArea.x) %>% count() %>% rename(PostcodeArea=PostcodeArea.x) %>% full_join(x=restaurants_area, y=., by="PostcodeArea") %>% rename(Restaurants=n.x, Matched=n.y)
 restaurants_area <- unmatched %>% group_by(PostcodeArea) %>% count() %>% full_join(x=restaurants_area, y=., by="PostcodeArea") %>% rename(Unmatched=n)
 #Percentage of matched restaurants.
 restaurants_area$Percent_match <- replace_na(restaurants_area$Matched) / restaurants_area$Restaurants
 
+## Map ----                            
 #Map showing matched percentage by postcode area.
 library('rgeos')
 library('rgdal')
