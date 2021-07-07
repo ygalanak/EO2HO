@@ -2,6 +2,7 @@
 library('lubridate')
 library('dplyr')
 library('tidyr')
+library('plotly')
 
 #Incorporations data.
 
@@ -183,10 +184,10 @@ plot_ly(data=period2_NUTS1) %>% add_bars(x=~Name, y=~Diff, showlegend=FALSE,
 
 ##Maps----
 #Map of difference (effect of EO2HO).
-library(raster)
-library(rgeos)
-library(rgdal)
-library(maptools)
+library('raster')
+library('rgeos')
+library('rgdal')
+library('maptools')
 shp <- readOGR('Map/NUTS_Level_1_(January_2018)_Boundaries.shp')
 shp1 <- fortify(shp, region="nuts118cd")
 shp1 <- merge(shp1, period2_NUTS1, by.x='id', by.y='NUTS1', all.x=TRUE) %>% arrange(order)
