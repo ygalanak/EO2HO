@@ -9,4 +9,4 @@
 **Source:** https://github.com/hmrc/eat-out-to-help-out-establishments
 
 
-`DocumentationsCompaniesHouseData.pdf` corresponds to the documentation file of [Companies House](https://www.gov.uk/government/organisations/companies-house) data (see most recent release of data [here](http://download.companieshouse.gov.uk/en_output.html)).
+`DocumentationsCompaniesHouseData.pdf` corresponds to the documentation file of [Companies House](https://www.gov.uk/government/organisations/companies-house) data (see most recent release of data [here](http://download.companieshouse.gov.uk/en_output.html)). A more detailed documentation about each variable can be found [here](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/426891/uniformResourceIdentifiersCustomerGuide.pdf).
