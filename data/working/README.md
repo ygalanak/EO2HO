@@ -12,6 +12,8 @@ For variables documentation:
 |     PostcodeDistrict    |     Postcode district            |
 |     PostcodeArea        |     Postcode area                |
 
+A comment for matching the data is available on appendix A of our report.
+
 - `sample.csv`: a random sample of size 20,249 is taken from the Companies House basic dataset of all existing (as of October 2020) companies in the UK. To sample relevant companies, it is weighted by 2-digit SIC code according to the proportions of EO2HO-participating businesses, as in Table 2 of our report.
 
 
