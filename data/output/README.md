@@ -1,1 +1,73 @@
-# Data output
+# Graphs
+
+1. `Fig1.csv`
+
+   | Variable | Description                                        |
+   | -------- | -------------------------------------------------- |
+   | NUTS1    | NUTS1 code                                         |
+   | Name     | Name of NUTS1 region                               |
+   | n        | Number of registered establishments in each region |
+
+2. `Fig2.csv`: comparing registered EO2HO establishments to a sample of relevant companies by region
+
+   | Variable | Description                                                  |
+   | -------- | ------------------------------------------------------------ |
+   | Name     | Name of NUTS1 region                                         |
+   | EO2HO    | Proportion of EO2HO establishments in each region            |
+   | All      | Proportion of (sample of) relevant companies in each region  |
+   | EO2HO.1  | Proportion of EO2HO establishments in each region (excluding London) |
+   | All.1    | Proportion of (sample of) relevant companies in each region (excluding London) |
+
+3. `Fig3`: Comparing registered EO2HO establishments to a sample of relevant companies by age
+   `Fig3a.csv` - matched EO2HO companies; `Fig3b.csv`- Sample of relevant companies 
+
+   | Variable | Description       |
+   | -------- | ----------------- |
+   | x        | Date (yyyy-mm-dd) |
+   | y        | Density4.         |
+
+4. `Fig4.csv`: ratio of registrations
+
+   | Variable        | Description                                      |
+   | --------------- | ------------------------------------------------ |
+   | Week            | number of week (based on the incorporation date) |
+   | All_Postcodes   | Ratio of registrations in all postcodes          |
+   | EO2HO_Postcodes | Ratio of registrations in EO2HO postcodes        |
+   | iAll            | Ratio in all postcodes indexed at week 23        |
+   | iEO2HO          | Ratio in EO2HO postcodes indexed at week 23      |
+
+5. `Fig5.csv`
+
+   | Variable        | Description                                      |
+   | --------------- | ------------------------------------------------ |
+   | Week            | number of week (based on the incorporation date) |
+   | All_Postcodes   | Ratio of registrations in all postcodes          |
+   | EO2HO_Postcodes | Ratio of registrations in EO2HO postcodes        |
+   | iAll            | Ratio in all postcodes indexed at week 23        |
+   | iEO2HO          | Ratio in EO2HO postcodes indexed at week 23      |
+
+6. `Fig6.csv`: effect of EO2HO: the difference between EO2HO-participating postcodes and all, relative to their 2019 levels
+
+   | Variable  | Description                                                  |
+   | --------- | ------------------------------------------------------------ |
+   | Week      | number of week (based on the incorporation date)             |
+   | HospDiff  | Ratio of registrations in EO2HO postcodes minus ratio in all postcodes for Accommodation and Food |
+   | OtherDiff | Ratio of registrations in EO2HO postcodes minus ratio in all postcodes for other sectors |
+
+7. `Fig7.csv`
+
+   | Variable        | Description                                      |
+   | --------------- | ------------------------------------------------ |
+   | Week            | number of week (based on the incorporation date) |
+   | All_Postcodes   | Ratio of registrations in all postcodes          |
+   | EO2HO_Postcodes | Ratio of registrations in EO2HO postcodes        |
+
+8. `Fig9.csv`
+
+   | Variable | Description                                                  |
+   | -------- | ------------------------------------------------------------ |
+   | Name     | Name of NUTS1 region                                         |
+   | Diff     | Ratio of registrations in EO2HO postcodes minus ratio   in all postcodes for other sectors |
+   | Lo       | Lower bound of 95% confidence interval for Diff              |
+   | Hi       | Upper bound of 95% confidence interval for Diff              |
+   
