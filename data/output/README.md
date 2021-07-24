@@ -1,5 +1,11 @@
 # Graphs
 
+## tl;dr
+
+This folder stores all our figures values. This is a documentation file.
+
+## Documentation
+
 1. `Fig1.csv`
 
    | Variable | Description                                        |
@@ -70,4 +76,60 @@
    | Diff     | Ratio of registrations in EO2HO postcodes minus ratio   in all postcodes for other sectors |
    | Lo       | Lower bound of 95% confidence interval for Diff              |
    | Hi       | Upper bound of 95% confidence interval for Diff              |
-   
+
+9. `Fig10.csv`
+
+   | Variable    | Description                                                  |
+   | ----------- | ------------------------------------------------------------ |
+   | Name        | Name of NUTS1 region                                         |
+   | Restaurants | Number of registered restaurants                             |
+   | Ratio       | Ratio of registrations (all postcodes)                       |
+   | Predict     | Predicted ratio of registrations from linear best fit   model |
+
+10. `Fig11.csv`
+
+    | Variable     | Description                            |
+    | ------------ | -------------------------------------- |
+    | PostcodeArea | Postcode area                          |
+    | R            | Number of registered restaurants       |
+    | Ratio        | Ratio of registrations (all postcodes) |
+
+11. `Fig12.csv`
+
+    | Variable | Description                                                  |
+    | -------- | ------------------------------------------------------------ |
+    | Name     | Truncated (to three words maximum) name of sector            |
+    | Week     | number of week (based on the incorporation date)             |
+    | iAll     | Ratio of registrations in all postcodes indexed at   week 23 |
+    | iEO2HO   | Ratio of registrations in EO2HO postcodes indexed at   week 23 |
+
+12. `Fig13.csv`
+
+    | Variable | Description                                                  |
+    | -------- | ------------------------------------------------------------ |
+    | Name     | Truncated (to three words maximum) name of sector            |
+    | Diff     | Ratio of registrations in EO2HO postcodes minus ratio   in all postcodes for other sectors |
+    | Lo       | Lower bound of 95% confidence interval for Diff              |
+    | Hi       | Upper bound of 95% confidence interval for Diff              |
+
+13. `Fig14.csv`
+
+    | Variable | Description                                                  |
+    | -------- | ------------------------------------------------------------ |
+    | Name     | Truncated (to three words maximum) name of sector            |
+    | Week     | number of week (based on the incorporation date)             |
+    | iAll     | Ratio of registrations in all postcodes indexed at   week 23 |
+    | iEO2HO   | Ratio of registrations in EO2HO postcodes indexed at   week 23 |
+
+14. `Fig15.csv`
+
+    | Variable                        | Description                                                  |
+    | ------------------------------- | ------------------------------------------------------------ |
+    | Date                            | Date (yyyy-mm-dd)                                            |
+    | Accommodation.and.food.services | Number of employees in hospitality sector on furlough   through CJRS |
+    | Total                           | Number of employees on furlough through CJRS in total        |
+
+
+
+
+
