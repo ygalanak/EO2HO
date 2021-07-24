@@ -3,6 +3,7 @@
 - `EO2HOdata.csv` and `Baselinedata.csv`. See [here](https://resources.companieshouse.gov.uk/toolsToHelp/pdf/freeDataProductDataset.pdf) Details for these are provided in folder `/data/input/`
 - `matched_restaurants.csv`: matched EO2HO-participating restaurants (as released by HMRC) to Companies House basic data.
 For variables documentation:
+
 | Variable                | Description                      |
 |-------------------------|----------------------------------|
 |     2-6                 |     See restaurants              |
