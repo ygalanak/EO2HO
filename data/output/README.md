@@ -1,3 +1,5 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/ygalanak/EO2HO)
+
 # Graphs
 
 ## tl;dr
