@@ -1,4 +1,5 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/ygalanak/EO2HO)
+https://img.shields.io/github/license/ygalanak/EO2HO
 
 # EO2HO
 
