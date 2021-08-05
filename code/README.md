@@ -8,3 +8,6 @@ Code runs in R.
 3. `Regional analysis.R`: analysis of weekly registrations in other sectors by NUTS1 region. Quick investigation into whether a linear relationship exists between number of participating restaurants and ratio of registrations. **Outputs**: Plots including figures **1**, **7**, **8**, **9**, **10**, **11**.
 4. `Sectoral analysis.R`: analysis of weekly registrations in non-hospitality sectors by sector. **Outputs**: Plots includng figures **12**, **13**, **14**.
 5. `Furlough.R`: Analysis of number of employees on furlough in Accommodation and food services sector and in the whole economy. Calculates the reduction of employee-days and estimates savings. **Outputs**: Plots including figures **15**, **16**.
+
+## Appendix graph
+- `textbookExercise_Appendix C.R`: plots the graph of our textbook exercise using the `ggplot2` R package.
