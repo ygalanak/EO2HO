@@ -13,8 +13,8 @@ This project looks at the economic impact of Eat Out to Help Out scheme on firm 
 
 
 # Funder
-Project financed with the award of Summer Vacation Research Project 2021, by the University of Kent.
+Project financed by ESRC and the Summer Vacation Research Project 2021 award by the University of Kent.
 
 # Team
-Yannis Galanakis <i.galanakis@kent.ac.uk>; Jonathan Hobbs <jph37@kent.ac.uk>
+Yannis Galanakis <i.galanakis@kent.ac.uk>; Jonathan Hobbs <jph37@kent.ac.uk>; Anthony Savagar <a.savagar@kent.ac.uk>
 
